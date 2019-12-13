@@ -1,7 +1,5 @@
 <!doctype html>
-h1 {
-   font-size: 150%; // makes font bigger on 50% 
-}
+
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
     <meta charset="utf-8">
@@ -18,7 +16,7 @@ h1 {
     <![endif]-->
   </head>
   <body>
-    <div class="wrapper">
+    <div font-size: 150%;class="wrapper">
       <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
         <h1>{{ site.title | default: site.github.repository_name }}</h1>
       </header>
