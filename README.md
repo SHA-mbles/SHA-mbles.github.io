@@ -1,9 +1,12 @@
-## Summary
+## Chosen-Prefix Collision Attack Against SHA-1 Hash Function
 
-We have computed TODO
+We have computed TODO ...
 
 
 ## A Chosen-Prefix Collision Example
+
+You can find here two PGP certification keys that lead to the same hash output through SHA-1.
+
 
 ## Q&A
 
@@ -41,5 +44,5 @@ TODO: https://github.com/Cryptosaurus/sha1-cp
 
 If you have any questions, feel free to contact us:  
   
-Gaëtan Leurent: gaetan.leurent@inria.fr  
-Thomas Peyrin: thomas.peyrin@ntu.edu.sg  
+**Gaëtan Leurent:** gaetan.leurent@inria.fr  
+**Thomas Peyrin:** thomas.peyrin@ntu.edu.sg  
