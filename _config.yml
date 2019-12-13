@@ -2,3 +2,6 @@ theme: jekyll-theme-modernist
 
 title: SHAmbles
 subtitle: " "
+
+github:
+  is_project_page: false
