@@ -1,37 +1,45 @@
-## Welcome to GitHub Pages
+## Summary
 
-You can use the [editor on GitHub](https://github.com/SHA-mbles/SHAmbles/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+We have computed TODO
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## A Chosen-Prefix Collision Example
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Q&A
 
-```markdown
-Syntax highlighted code block
+### What is a chosen-prefix collision ?
 
-# Header 1
-## Header 2
-### Header 3
+TODO
 
-- Bulleted
-- List
+### What is affected ?
 
-1. Numbered
-2. List
+TODO
 
-**Bold** and _Italic_ and `Code` text
+### What should I do ?
 
-[Link](url) and ![Image](src)
-```
+Remove any use of SHA-1 as soon as possible, and use instead SHA-256 or SHA-3
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+### How much does the attack cost ?
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/SHA-mbles/SHAmbles/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+TODO
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Is SHA-1 really still used ?
+
+TODO
+
+
+### Wasn't there already a chosen-prefix collision attack against SHA-1 ?
+
+TODO: https://github.com/Cryptosaurus/sha1-cp
+
+
+
+
+## Contact
+
+If you have any questions, feel free to contact us:  
+  
+Gaëtan Leurent: gaetan.leurent@inria.fr  
+Thomas Peyrin: thomas.peyrin@ntu.edu.sg  
