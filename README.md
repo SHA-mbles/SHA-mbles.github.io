@@ -2,8 +2,9 @@
 
 We have computed TODO ...
   
-   
-   
+  \ 
+   \
+   \
 - - -
 ## A Chosen-Prefix Collision Example
 
