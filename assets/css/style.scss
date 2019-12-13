@@ -1,4 +1,9 @@
+  
 ---
 ---
 
-@import "";
+@import "{{ site.theme }}";
+
+.inner {
+  max-width: 175%;
+}
