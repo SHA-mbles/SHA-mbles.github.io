@@ -1,13 +1,14 @@
-## Chosen-Prefix Collision Attack Against SHA-1 Hash Function
+## Chosen-Prefix Collision Attack Against SHA-1
 
 We have computed TODO ...
 
-
+- - -
 ## A Chosen-Prefix Collision Example
 
 You can find here two PGP certification keys that lead to the same hash output through SHA-1.
 
 
+- - -
 ## Q&A
 
 ### What is a chosen-prefix collision ?
@@ -39,7 +40,7 @@ TODO: https://github.com/Cryptosaurus/sha1-cp
 
 
 
-
+- - -
 ## Contact
 
 If you have any questions, feel free to contact us:  
