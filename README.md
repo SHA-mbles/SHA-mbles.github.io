@@ -10,7 +10,8 @@ We have computed TODO ...
 
 You can find here two PGP certification keys that lead to the same hash output through SHA-1.
    
-   
+&nbsp;
+&nbsp;   
    
 - - -
 ## Q&A
@@ -42,6 +43,9 @@ TODO
 
 TODO: https://github.com/Cryptosaurus/sha1-cp
   
+  
+&nbsp;
+&nbsp;  
   
 - - -
 ## Contact
