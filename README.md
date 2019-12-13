@@ -2,9 +2,12 @@
 
 We have computed TODO ...
   
-  \ 
-   \
-   \
+&NewLine;
+&NewLine;
+
+</br>
+</br>
+
 - - -
 ## A Chosen-Prefix Collision Example
 
