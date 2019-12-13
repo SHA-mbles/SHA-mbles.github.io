@@ -5,7 +5,7 @@ We have computed TODO ...
 &nbsp;
 &nbsp;
 
-- - -
+
 ## A Chosen-Prefix Collision Example
 
 You can find here two PGP certification keys that lead to the same hash output through SHA-1.
@@ -13,7 +13,7 @@ You can find here two PGP certification keys that lead to the same hash output t
 &nbsp;
 &nbsp;   
    
-- - -
+
 ## Q&A
 
 ### What is a chosen-prefix collision ?
