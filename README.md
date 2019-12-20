@@ -41,6 +41,11 @@ TODO
 TODO
 
 
+### Wasn't there already a collision attack against SHA-1 ?
+
+TODO
+
+
 ### Wasn't there already a chosen-prefix collision attack against SHA-1 ?
 
 TODO: https://github.com/Cryptosaurus/sha1-cp
