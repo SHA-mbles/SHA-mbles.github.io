@@ -1,6 +1,6 @@
 &nbsp;
 
-We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with actual very dangerous potential practical implications if you are still using this hash function. Check our paper [here](TODO) for more details. 
+We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with actual very dangerous potential practical implications if you are still using this hash function. Check our paper **[here](TODO)** for more details. 
   
 &nbsp;
 &nbsp;
