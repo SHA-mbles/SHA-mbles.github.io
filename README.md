@@ -54,7 +54,7 @@ We were able to forge key-certification signatures using SHA-1 chosen-prefix col
 
 ### What should I do ?
 
-**Remove any use of SHA-1 in your product as soon as possible**, and *use instead **SHA-256** or **SHA-3** *. 
+**Remove any use of SHA-1 in your product as soon as possible**, and use instead **SHA-256** or **SHA-3**. 
 
 SHA-1 has been broken for 15 years, so there is no good reason to use this hash function in modern security software. Attacks only get better over time, and the goal of the cryptanalysis effort is to warn users so that they can deprecate algorithms before the attacks get practical. We actually expect our attack to cost just a couple thousand USD in a few years. 
 
@@ -73,7 +73,7 @@ A classical collision has been computed for SHA-1 in late 2017, as you can see [
 
 ### Wasn't there already a chosen-prefix collision attack against SHA-1 ?
 
-Last year, we announced a new chosen-prefix collision attack, as you can see [here](https://eprint.iacr.org/2019/459)([some test code](https://github.com/Cryptosaurus/sha1-cp) is also available) and this work was published at the [Eurocrypt 2019](https://eurocrypt.iacr.org/2019/) conference. Here, we further improved these results up to a point where the attack becomes doable for a reasonable amount of money, and we wrote an actual implementation of the attack to compute the chosen-prefix collision against SHA-1.
+Last year, we announced a new chosen-prefix collision attack, as you can see [here](https://eprint.iacr.org/2019/459) ([some test code](https://github.com/Cryptosaurus/sha1-cp) is also available) and this work was published at the [Eurocrypt 2019](https://eurocrypt.iacr.org/2019/) conference. Here, we further improved these results up to a point where the attack becomes doable for a reasonable amount of money, and we wrote an actual implementation of the attack to compute the chosen-prefix collision against SHA-1.
   
   
 ### Can I try it out for myself ?
