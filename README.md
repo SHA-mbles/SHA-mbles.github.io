@@ -12,31 +12,26 @@ We have create a chosen-prefix collision with prefixes `99 04 0d 04 7f e8 17 80 
 - [messageA](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageA)
 - [messageB](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageB)
 
-The prefix was chosen so that the collision can be used to build two PGP keys so that SHA-1 certification signatures of the keys collide.  You can download two example keys below, with different user names, and you can examine them with `pgpdump -i` to see that the SHA-1 signatures issued by `0xAFBB1FED6951A956` are the same:
-- [alice.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/alice.asc) 
-- [bob.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/bob.asc) 
-To avoid malicious usage, the keys have a creation date far in the future; if you want to analyse them with pgp, you can use options `--ignore-time-conflict --ignore-valid-from` (more generally you can prefix arbitrary commands with `faketime @2145920400`).
-   
-&nbsp;
-&nbsp;   
-   
+The prefix was chosen so that the collision can be used to build two PGP public keys so that SHA-1 certification signatures of the keys collide.  You can download two example keys below, with different user names, and you can examine them with `pgpdump -i` to see that the SHA-1 signatures issued by `0xAFBB1FED6951A956` are the same:
+- [alice.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/alice.asc)
+- [bob.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/bob.asc)
+
+In order to avoid malicious usage, the keys have a creation date far in the future; if you want to analyse them with pgp, you can use options `--ignore-time-conflict --ignore-valid-from` (more generally you can prefix arbitrary commands with `faketime @2145920400`).
 
 # Q&A
 
 ## What is a chosen-prefix collision ?
 
-A classical collision for a hash function H is simply two messages M and M' that lead to the same hash output: H(M) = H(M'). Even though this security notion is fundamental in cryptography, exploiting a classical collision for attacks in practice is difficult.
+A classical collision (or identical-prefix collision) for a hash function H is simply two messages M and M' that lead to the same hash output: H(M) = H(M'). Even though this security notion is fundamental in cryptography, exploiting a classical collision for attacks in practice is difficult.
 
 A chosen-prefix collision is a more constrained (and much more difficult to obtain) type of collision, where two message prefixes P and P' are first given as challenge to the adversary, and his goal is then to compute two messages M and M' such that H(P \|\| M) = H(P' \|\| M'), where \|\| denotes concatenation.
 
 With such an ability, the attacker can obtain a collision even though prefixes can be chosen arbitrarily (and thus potentially contain some meaningful information). This is particularly impactful when the hash function is used in a digital signature scheme, one of the most common usage of a hash function.
 
-&nbsp; 
 ## Is SHA-1 really still used ? 
 
-Unfortunately, SHA-1 is still present in a surprising number of security applications. It is supported in many secure channel protocols (TLS, SSH), and remains actually used for some fraction of the connections. It is also used for PGP key-certifications, and it is the foundation of GIT versioning system. There are probably a lot of less known or proprietary protocols that still use SHA-1, but this is more difficult to evaluate. 
+SHA-1 usage has significantly decreased in the last years; in particular web browsers now reject certificates signed with SHA-1. However, SHA-1 signatures are still supported in a large number of applications.  SHA-1 is the default hash function used for certifying PGP keys in the legacy branch of GnuPG, and those signatures were accepted by the modern branch of GnuPG before we reported our results.  Many non-web TLS clients also accept SHA-1 certificates, and SHA-1 is still allowed for in-protocol signatures in TLS and SSH.  Even if actual usage is low (in the order of 1%), the fact that SHA-1 is allowed threatens the security because a meet-in-the-middle attacker will downgrade the connection to SHA-1.  SHA-1 is also the foundation of the GIT versioning system.  There are probably a lot of less known or proprietary protocols that still use SHA-1, but this is more difficult to evaluate. 
 
-&nbsp; 
 ##  What is affected ? 
 
 Any usage where collision resistance is expected from SHA-1 is of course at high risk. We identified a few settings that are directly affected by chosen-prefix collisions:
