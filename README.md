@@ -1,5 +1,21 @@
 We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with actual very dangerous potential practical implications if you are still using this hash function. Check our paper **[here](TODO)** for more details. 
 
+#  Our Contributions
+
+## Complexity improvements.
+
+We have significantly improved the complexity of SHA-1 attacks, reducing the cost of a collision attack from 2<sup>64.7</sup> to 2<sup>61.2</sup>, and the cost of a chosen-prefix collision attack from 2<sup>67.1</sup> to 2<sup>63.4</sup> (on a GTX 970).
+
+## Record computation
+
+We implemented the entire chosen-prefix collision attack with those improvements. This attack is extremely technical, contains many details, various steps, and requires a lot of engineering work.  In order to perform this computation with a small academic budget, we rented cheap gaming or mining GPUs from [gpuserversrental.com], rather that the datacenter-grade hardware used by big cloud providers. We have successfully run the computation during two months last summer, using 900 GPUs (Nvidia GTX 1060).
+
+## PGP key-certification forgery
+
+We chose the PGP/GnuPG Web of Trust as demonstration of our chosen-prefix collision attack against SHA-1. The Web of Trust is a trust model used for PGP that relies on users signing each other’s identity certificate, instead of using a central PKI. For compatibility reasons the legacy branch of GnuPG (version 1.4) still uses SHA-1 by default for key-certification signatures.
+
+Using our SHA-1 chosen-prefix collision, we have created two PGP keys with different UserIDs, so that key B is a legitimate key for Bob (to be signed by the Web of Trust), but the signature can be transferred to key A which is a forged key with Alice’s ID.  The signature will still be valid because of the collision, but Bob controls key A with the name of Alice, and signed by a third party. Therefore, he can sign any document in the name of Alice.
+
 # Our Chosen-Prefix Collision Example
 
 We have create a chosen-prefix collision with prefixes `99 04 0d 04 7f e8 17 80 01 20 00` and `99 03 0d 04 7f e8 17 80 01 18 00`.  You can download the two messages below, and verify their hash with the `sha1sum` tool:
@@ -52,12 +68,6 @@ Any usage where collision resistance is expected from SHA-1 is of course at high
 We note that classical collisions and chosen-prefix collisions do not threaten all usages of SHA-1. In particular,
 HMAC-SHA-1 seems relatively safe, and preimage resistance (aka ability to invert the hash function) of SHA-1 remains unbroken as of today. Yet, as cryptographers we recommend to deprecate SHA-1 everywhere, even when there is no direct evidence that this weaknesses can be exploited. 
  
-##  What about your PGP example ? 
-
-We chose PGP/GnuPG Web of Trust as demonstration of our chosen-prefix collision attack against SHA-1. The Web of Trust is a trust model used for PGP that relies on users signing each other’s identity certificate, instead of using a central PKI. For compatibility reasons the legacy branch of GnuPG (version 1.4) still uses SHA-1 by default for key-certification signatures.
-
-We were able to forge key-certification signatures using SHA-1 chosen-prefix collisions. More precisely, we created two PGP keys with different UserIDs, so that key B is a legitimate key for Bob (to be signed by the Web of Trust), but the signature can be transferred to key A which is a forged key with Alice’s ID. 
-
 ## What should I do ?
 
 **Remove any use of SHA-1 in your product as soon as possible and use instead [SHA-256](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) or [SHA-3](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)**. 
