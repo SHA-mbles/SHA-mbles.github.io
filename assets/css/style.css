@@ -5,12 +5,12 @@
 @import "";
 
 .inner {
-  max-width: 275%;
+  max-width: 75%;
 }
 
 h1 {
- font-size: 150px;
+ font-size: 50px;
 }
 @media all header p {
-  width: 275%;
+  width: 75%;
 }
