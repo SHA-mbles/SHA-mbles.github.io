@@ -1,12 +1,6 @@
-&nbsp;
-
 We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with actual very dangerous potential practical implications if you are still using this hash function. Check our paper **[here](TODO)** for more details. 
-  
-&nbsp;
-&nbsp;
 
-
-## Our Chosen-Prefix Collision Example
+# Our Chosen-Prefix Collision Example
 
 We have create a chosen-prefix collision with prefixes `99 04 0d 04 7f e8 17 80 01 20 00` and `99 03 0d 04 7f e8 17 80 01 18 00`.  You can download the two messages below, and verify their hash with the `sha1sum` tool:
 - [messageA](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageA)
@@ -17,6 +11,23 @@ The prefix was chosen so that the collision can be used to build two PGP public 
 - [bob.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/bob.asc)
 
 In order to avoid malicious usage, the keys have a creation date far in the future; if you want to analyse them with pgp, you can use options `--ignore-time-conflict --ignore-valid-from` (more generally you can prefix arbitrary commands with `faketime @2145920400`).
+
+#  Responsible Disclosure
+
+We have tried to contact the authors of affected software before announcing this attack, but due to limited resources, we could not notify everyone.
+
+## GnuPG
+
+We have first discussed this attack with the GnuPG developers the 9th of May 2019 and eventually informed them of the newly found chosen-prefix collision the 1st of October 2019. The issue is tracked with CVE number CVE-2019-14855. A countermeasure
+has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (released on the 25th of November 2019): SHA-1-based key signatures created after 2019-01-19 are now considered invalid.
+
+## CAcert
+
+[CAcert](http://cacert.org/) is one of them main CAs for PGP keys. We noticed that there is a large number of keys with recent SHA-1 signatures from CAcert on public keyservers. This seems to indicate that they still use SHA-1 to sign user keys. We have contacted them by email on December 14th, but as of December 29th, we did not receive any answer despite repeated contact attempts.
+
+## OpenSSL
+
+We have contacted the OpenSSL developers on December 14th. They are considering disabling SHA-1 at security level 1 (defined as 80-bit security) after our attack. Since security level 1 is the default configuration, this would prevent SHA-1 usage for certificates, and for handshake signatures. Debian Linux had previously set the default configuration to security level 2 (defined as 112-bit security) in the latest release (Debian Buster); this already prevents dangerous usage of SHA-1.
 
 # Q&A
 
@@ -40,47 +51,37 @@ Any usage where collision resistance is expected from SHA-1 is of course at high
 
 We note that classical collisions and chosen-prefix collisions do not threaten all usages of SHA-1. In particular,
 HMAC-SHA-1 seems relatively safe, and preimage resistance (aka ability to invert the hash function) of SHA-1 remains unbroken as of today. Yet, as cryptographers we recommend to deprecate SHA-1 everywhere, even when there is no direct evidence that this weaknesses can be exploited. 
-
-&nbsp; 
+ 
 ##  What about your PGP example ? 
 
 We chose PGP/GnuPG Web of Trust as demonstration of our chosen-prefix collision attack against SHA-1. The Web of Trust is a trust model used for PGP that relies on users signing each other’s identity certificate, instead of using a central PKI. For compatibility reasons the legacy branch of GnuPG (version 1.4) still uses SHA-1 by default for key-certification signatures.
 
 We were able to forge key-certification signatures using SHA-1 chosen-prefix collisions. More precisely, we created two PGP keys with different UserIDs, so that key B is a legitimate key for Bob (to be signed by the Web of Trust), but the signature can be transferred to key A which is a forged key with Alice’s ID. 
 
-&nbsp; 
 ## What should I do ?
 
 **Remove any use of SHA-1 in your product as soon as possible and use instead [SHA-256](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) or [SHA-3](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)**. 
 
 SHA-1 has been broken for 15 years, so there is no good reason to use this hash function in modern security software. Attacks only get better over time, and the goal of the cryptanalysis effort is to warn users so that they can deprecate algorithms before the attacks get practical. We actually expect our attack to cost just a couple thousand USD in a few years. 
 
-&nbsp; 
 ## How much does the attack cost ?
 
 By renting a GPU cluster online, the entire chosen-prefix collision attack on SHA-1 costed us about 75k USD. However, at the time of conputation, our implementation was not optimal and we lost some time (because research). Besides, computation prices went further down since then, so we estimate that our attack costs today about 45k USD. As computation costs continue to decrease rapidly, we evaluate that it should cost less than 10k USD to generate a chosen-prefix collision attack on SHA-1 by 2025.
 
 As a side note, a classical collision for SHA-1 now costs just about 11k USD. 
 
-&nbsp; 
 ## Wasn't there already a collision attack against SHA-1 ?
 
 A classical collision has been computed for SHA-1 in late 2017, as you can see [here](https://shattered.io/). However, this is very different from a chosen-prefix collision, where any prefix pair can be challenged for the collision, which leads to a much more serious impact in practice.  
 
-&nbsp; 
 ## Wasn't there already a chosen-prefix collision attack against SHA-1 ?
 
 Last year, we announced a new chosen-prefix collision attack, as you can see [here](https://eprint.iacr.org/2019/459) ([some test code](https://github.com/Cryptosaurus/sha1-cp) is also available) and this work was published at the [Eurocrypt 2019](https://eurocrypt.iacr.org/2019/) conference. Here, we further improved these results up to a point where the attack becomes doable for a reasonable amount of money, and we wrote an actual implementation of the attack to compute the chosen-prefix collision against SHA-1.
-  
-&nbsp; 
+
 ## Can I try it out for myself ?
  
-Since our attack on SHA-1 has pratical implications, in order to make sure proper countermeasures have been pushed we will wait for some time before releasing the entire source code that allows to generate SHA-1 chosen-prefix collisions.   
+Since our attack on SHA-1 has pratical implications, in order to make sure proper countermeasures have been pushed we will wait for some time before releasing source code that allows to generate SHA-1 chosen-prefix collisions.   
 
- 
-&nbsp;
-&nbsp;   
- 
 - - -
 # Contact
 
