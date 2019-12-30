@@ -1,8 +1,6 @@
 &nbsp;
 
-## Chosen-Prefix Collision Attack Against SHA-1
-
-We have computed the very first chosen-prefix collision for SHA-1. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with actual very dangerous potential practical implications if you are still using this hash function. Check our paper [here](TODO) for more details. 
+We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with actual very dangerous potential practical implications if you are still using this hash function. Check our paper [here](TODO) for more details. 
   
 &nbsp;
 &nbsp;
@@ -19,18 +17,18 @@ You can find here two PGP certification keys that lead to the same hash output t
 &nbsp;   
    
 
-## Q&A
+# Q&A
 
-### What is a chosen-prefix collision ?
+## What is a chosen-prefix collision ?
 
-A classical collision for a hash function H is simply two messages M and M' that lead to the same hash output: H(M) = H(M'). Even though this security notion is fundamental in cryptography, exploiting a classical collision for attacks in practice is diffifult. 
+A classical collision for a hash function H is simply two messages M and M' that lead to the same hash output: H(M) = H(M'). Even though this security notion is fundamental in cryptography, exploiting a classical collision for attacks in practice is difficult.
 
-A chosen-prefix collision is a more constrained (and much more difficult to obtain) type of collision, where two message prefixes P and P' are first given as challenge to the adversary, and his goal is then to compute two messages M and M' such that H(P || M) = H(P' || M'), where || denotes concatenation. 
+A chosen-prefix collision is a more constrained (and much more difficult to obtain) type of collision, where two message prefixes P and P' are first given as challenge to the adversary, and his goal is then to compute two messages M and M' such that H(P || M) = H(P' || M'), where || denotes concatenation.
 
 With such an ability, the attacker can obtain a collision even though prefixes can be chosen arbitrarily (and thus potentially contain some meaningful information). This is particularly impactful when the hash function is used in a digital signature scheme, one of the most common usage of a hash function.
 
 
-### Is SHA-1 really still used ? 
+## Is SHA-1 really still used ? 
 
 Unfortunately, SHA-1 is still present in a surprising number of security applications. It is supported in many secure channel protocols (TLS, SSH), and remains actually used for some fraction of the connections. It is also used for PGP key-certifications, and it is the foundation of GIT versioning system. There are probably a lot of less known or proprietary protocols that still use SHA-1, but this is more difficult to evaluate. 
 
