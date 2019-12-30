@@ -19,12 +19,12 @@ Using our SHA-1 chosen-prefix collision, we have created two PGP keys with diffe
 # Our Chosen-Prefix Collision Example
 
 We have create a chosen-prefix collision with prefixes `99040d047fe81780012000` and `99030d047fe81780011800` (in hexadecimal notation).  You can download the two messages below, and verify their hash with the `sha1sum` tool:
-- [messageA](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageA)
-- [messageB](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageB)
+- [messageA](messageA)
+- [messageB](messageB)
 
 The prefixes have been chosen to build two PGP public keys with colliding SHA-1 certification signatures.  You can download two example keys below, with different user names, and examine them with `pgpdump -i` to see that the SHA-1 signatures issued by `0xAFBB1FED6951A956` are the same:
-- [alice.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/alice.asc)
-- [bob.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/bob.asc)
+- [alice.asc](alice.asc)
+- [bob.asc](bob.asc)
 
 In order to avoid malicious usage, the keys have a creation date far in the future; if you want to analyse them with pgp, you can use options `--ignore-time-conflict --ignore-valid-from` (more generally you can prefix arbitrary commands with `faketime @2145920400`).
 
