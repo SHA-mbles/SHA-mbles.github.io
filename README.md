@@ -8,10 +8,14 @@ We have computed the very first **chosen-prefix collision for SHA-1**. In a nuts
 
 ## Our Chosen-Prefix Collision Example
 
-You can find here two PGP certification keys that lead to the same hash output through SHA-1:
+We have create a chosen-prefix collision with prefixes `99 04 0d 04 7f e8 17 80 01 20 00` and `99 03 0d 04 7f e8 17 80 01 18 00`.  You can download the two messages below, and verify their hash with the `sha1sum` tool:
+- [messageA](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageA)
+- [messageB](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/messageB)
+
+The prefix was chosen so that the collision can be used to build two PGP keys so that SHA-1 certification signatures of the keys collide.  You can download two example keys below, with different user names, and you can examine them with `pgpdump -i` to see that the SHA-1 signatures issued by `0xAFBB1FED6951A956` are the same:
 - [alice.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/alice.asc) 
 - [bob.asc](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/bob.asc) 
-   
+To avoid malicious usage, the keys have a creation date far in the future; if you want to analyse them with pgp, you can use options `--ignore-time-conflict --ignore-valid-from` (more generally you can prefix arbitrary commands with `faketime @2145920400`).
    
 &nbsp;
 &nbsp;   
