@@ -52,7 +52,7 @@ We were able to forge key-certification signatures using SHA-1 chosen-prefix col
 &nbsp; 
 ## What should I do ?
 
-**Remove any use of SHA-1 in your product as soon as possible**, and use instead **SHA-256** or **SHA-3**. 
+**Remove any use of SHA-1 in your product as soon as possible and use instead ***SHA-256*** or ***SHA-3*** **. 
 
 SHA-1 has been broken for 15 years, so there is no good reason to use this hash function in modern security software. Attacks only get better over time, and the goal of the cryptanalysis effort is to warn users so that they can deprecate algorithms before the attacks get practical. We actually expect our attack to cost just a couple thousand USD in a few years. 
 
