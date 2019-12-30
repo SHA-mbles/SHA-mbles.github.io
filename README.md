@@ -23,7 +23,7 @@ You can find here two PGP certification keys that lead to the same hash output t
 
 A classical collision for a hash function H is simply two messages M and M' that lead to the same hash output: H(M) = H(M'). Even though this security notion is fundamental in cryptography, exploiting a classical collision for attacks in practice is difficult.
 
-A chosen-prefix collision is a more constrained (and much more difficult to obtain) type of collision, where two message prefixes P and P' are first given as challenge to the adversary, and his goal is then to compute two messages M and M' such that H(P || M) = H(P' || M'), where || denotes concatenation.
+A chosen-prefix collision is a more constrained (and much more difficult to obtain) type of collision, where two message prefixes P and P' are first given as challenge to the adversary, and his goal is then to compute two messages M and M' such that H(P \|\| M) = H(P' \|\| M'), where \|\| denotes concatenation.
 
 With such an ability, the attacker can obtain a collision even though prefixes can be chosen arbitrarily (and thus potentially contain some meaningful information). This is particularly impactful when the hash function is used in a digital signature scheme, one of the most common usage of a hash function.
 
