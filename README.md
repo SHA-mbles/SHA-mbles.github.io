@@ -100,4 +100,3 @@ If you have any questions, feel free to contact us:
 **Gaëtan Leurent:** gaetan.leurent@inria.fr  
 **Thomas Peyrin:** thomas.peyrin@ntu.edu.sg  
 
-![Image of Space Invader](https://raw.githubusercontent.com/SHA-mbles/SHA-mbles.github.io/master/invader.jpg)
