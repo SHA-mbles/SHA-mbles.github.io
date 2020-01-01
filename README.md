@@ -6,11 +6,13 @@ We have computed the very first **chosen-prefix collision for SHA-1**. In a nuts
 
 ## Complexity improvements
 
-We have significantly improved the complexity of SHA-1 attacks, reducing the cost of a collision attack from 2<sup>64.7</sup> to 2<sup>61.2</sup>, and the cost of a chosen-prefix collision attack from 2<sup>67.1</sup> to 2<sup>63.4</sup> (on a GTX 970 GPU).
+We have significantly improved the complexity of SHA-1 attacks, with a speedup factor around 10.  More precisely, we have reduced the cost of a collision attack from 2<sup>64.7</sup> to 2<sup>61.2</sup>, and the cost of a chosen-prefix collision attack from 2<sup>67.1</sup> to 2<sup>63.4</sup> (on a GTX 970 GPU).
 
 ## Record computation
 
 We implemented the entire chosen-prefix collision attack with those improvements. This attack is extremely technical, contains many details, various steps, and requires a lot of engineering work.  In order to perform this computation with a small academic budget, we rented cheap gaming or mining GPUs from [GPUserversrental](https://www.gpuserversrental.com/), rather that the datacenter-grade hardware used by big cloud providers. We have successfully run the computation during two months last summer, using 900 GPUs (Nvidia GTX 1060).
+
+As a side result, this shows that it now costs less than 100k USD to break cryptography with a security level of 64 bits (i.e. to compute 2<sup>64</sup> operations of symmetric cryptography).
 
 ## PGP key-certification forgery
 
