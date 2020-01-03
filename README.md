@@ -4,21 +4,21 @@ We have computed the very first **chosen-prefix collision for SHA-1**. In a nuts
 
 #  Our Contributions
 
-## Complexity improvements
+## Complexity Improvements
 
 We have significantly improved the complexity of SHA-1 attacks, with a speedup factor around 10.  More precisely, we have reduced the cost of a collision attack from 2<sup>64.7</sup> to 2<sup>61.2</sup>, and the cost of a chosen-prefix collision attack from 2<sup>67.1</sup> to 2<sup>63.4</sup> (on a GTX 970 GPU).
 
-## Record computation
+## Record Computation
 
 We implemented the entire chosen-prefix collision attack with those improvements. This attack is extremely technical, contains many details, various steps, and requires a lot of engineering work.  In order to perform this computation with a small academic budget, we rented cheap gaming or mining GPUs from [GPUserversrental](https://www.gpuserversrental.com/), rather that the datacenter-grade hardware used by big cloud providers. We have successfully run the computation during two months last summer, using 900 GPUs (Nvidia GTX 1060).
 
 As a side result, this shows that it now costs less than 100k USD to break cryptography with a security level of 64 bits (i.e. to compute 2<sup>64</sup> operations of symmetric cryptography).
 
-## PGP key-certification forgery
+## PGP/GnuPG Impersonation
 
-We chose the PGP/GnuPG Web of Trust as demonstration of our chosen-prefix collision attack against SHA-1. The Web of Trust is a trust model used for PGP that relies on users signing each other’s identity certificate, instead of using a central PKI. For compatibility reasons the legacy branch of GnuPG (version 1.4) still uses SHA-1 by default for key-certification signatures.
+We chose the PGP/GnuPG Web of Trust as demonstration of our chosen-prefix collision attack against SHA-1. The Web of Trust is a trust model used for PGP that relies on users signing each other’s identity certificate, instead of using a central PKI. For compatibility reasons the legacy branch of GnuPG (version 1.4) still uses SHA-1 by default for identity certification.
 
-Using our SHA-1 chosen-prefix collision, we have created two PGP keys with different UserIDs, so that key B is a legitimate key for Bob (to be signed by the Web of Trust), but the signature can be transferred to key A which is a forged key with Alice’s ID.  The signature will still be valid because of the collision, but Bob controls key A with the name of Alice, and signed by a third party. Therefore, he can sign any document in the name of Alice.
+Using our SHA-1 chosen-prefix collision, we have created two PGP keys with different UserIDs and colliding certificates: key B is a legitimate key for Bob (to be signed by the Web of Trust), but the signature can be transferred to key A which is a forged key with Alice’s ID.  The signature will still be valid because of the collision, but Bob controls key A with the name of Alice, and signed by a third party. Therefore, he can impersonate Alice and sign any document in her name.
 
 # Our Chosen-Prefix Collision Example
 
@@ -39,7 +39,7 @@ We have tried to contact the authors of affected software before announcing this
 ## GnuPG
 
 We have first discussed this attack with the GnuPG developers the 9th of May 2019 and eventually informed them of the newly found chosen-prefix collision the 1st of October 2019. The issue is tracked with CVE number CVE-2019-14855. A countermeasure
-has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (released on the 25th of November 2019): SHA-1-based key signatures created after 2019-01-19 are now considered invalid.
+has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (released on the 25th of November 2019): SHA-1-based identity signatures created after 2019-01-19 are now considered invalid.
 
 ## CAcert
 
