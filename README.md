@@ -1,4 +1,5 @@
 # This is on embargo until January 6, please do not distribute!
+## The result will be presented at Real World Crypto 2020
 
 We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with dangerous practical implications if you are still using this hash function.  To put it in another way: all attacks that are practical on MD5 are now also practical on SHA-1.  Check our paper **[here](TODO)** for more details. 
 
