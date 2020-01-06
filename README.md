@@ -44,7 +44,7 @@ has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (releas
 
 ## CAcert
 
-[CAcert](http://cacert.org/) is one of them main CAs for PGP keys. We noticed that there is a large number of keys with recent SHA-1 signatures from CAcert on public keyservers. This seems to indicate that they still use SHA-1 to sign user keys. We have contacted them by email on December 14th, but as of December 29th, we did not receive any answer despite repeated contact attempts.
+[CAcert](http://cacert.org/) is one of them main CAs for PGP keys. We noticed that there is a large number of keys with recent SHA-1 signatures from CAcert on public keyservers. This seems to indicate that they still use SHA-1 to sign user keys. We have first contacted them by email on December 14th, and got an answer on January 6th acknowledging this issue.  They are planning a switch to a secure hash function for key certification.
 
 ## OpenSSL
 
