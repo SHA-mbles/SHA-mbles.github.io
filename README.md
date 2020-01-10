@@ -1,4 +1,6 @@
-We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with dangerous practical implications if you are still using this hash function.  To put it in another way: all attacks that are practical on MD5 are now also practical on SHA-1.  Check our paper **[here](https://eprint.iacr.org/2020/014.pdf)** for more details. 
+We have computed the very first **chosen-prefix collision for SHA-1**. In a nutshell, this means a complete and practical break of the SHA-1 hash function, with dangerous practical implications if you are still using this hash function.  To put it in another way: all attacks that are practical on MD5 are now also practical on SHA-1.
+
+Check our paper **[here](https://eprint.iacr.org/2020/014.pdf)** for more details.  [Slides from RWC](Shambles_RWC.pdf) are also available.
 
 #  Our Contributions
 
