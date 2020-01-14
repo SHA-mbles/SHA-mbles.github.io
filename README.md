@@ -32,7 +32,7 @@ The prefixes have been chosen to build two PGP public keys with colliding SHA-1 
 
 In order to avoid malicious usage, the keys have a creation date far in the future; if you want to analyse them with pgp, you can use options `--ignore-time-conflict --ignore-valid-from` (more generally you can prefix arbitrary commands with `faketime @2145920400`).
 
-#  Responsible Disclosure
+#  Responsible Disclosure and Impact
 
 We have tried to contact the authors of affected software before announcing this attack, but due to limited resources, we could not notify everyone.
 
@@ -48,6 +48,10 @@ has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (releas
 ## OpenSSL
 
 We have contacted the OpenSSL developers on December 14th. They are considering disabling SHA-1 at security level 1 (defined as 80-bit security) after our attack. Since security level 1 is the default configuration, this would prevent SHA-1 usage for certificates, and for handshake signatures. Debian Linux had previously set the default configuration to security level 2 (defined as 112-bit security) in the latest release (Debian Buster); this already prevents dangerous usage of SHA-1.
+
+## DNSSEC
+
+After publication of our results, it was pointed that SHA-1 remained used in DNSSEC. It is advised that anyone who is using a SHA-1 DNSKEY algorithm (algorithm numbers 7 or less) should upgrade. See [related page from Tony Finch](https://www.dns.cam.ac.uk/news/2020-01-09-sha-mbles.html) or the [IETF related discussion](https://mailarchive.ietf.org/arch/msg/dnsop/hA4Ur9qxRJIUo13Pjpmrm_va7cs)
 
 # Q&A
 
