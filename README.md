@@ -84,7 +84,7 @@ SHA-1 has been broken for 15 years, so there is no good reason to use this hash 
 
 ## How much does the attack cost?
 
-By renting a GPU cluster online, the entire chosen-prefix collision attack on SHA-1 costed us about 75k USD. However, at the time of conputation, our implementation was not optimal and we lost some time (because research). Besides, computation prices went further down since then, so we estimate that our attack costs today about 45k USD. As computation costs continue to decrease rapidly, we evaluate that it should cost less than 10k USD to generate a chosen-prefix collision attack on SHA-1 by 2025.
+By renting a GPU cluster online, the entire chosen-prefix collision attack on SHA-1 costed us about 75k USD. However, at the time of computation, our implementation was not optimal and we lost some time (because research). Besides, computation prices went further down since then, so we estimate that our attack costs today about 45k USD. As computation costs continue to decrease rapidly, we evaluate that it should cost less than 10k USD to generate a chosen-prefix collision attack on SHA-1 by 2025.
 
 As a side note, a classical collision for SHA-1 now costs just about 11k USD. 
 
