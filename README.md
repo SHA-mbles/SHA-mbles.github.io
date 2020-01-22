@@ -100,6 +100,16 @@ Last year, we announced a new chosen-prefix collision attack, as you can see [he
  
 Since our attack on SHA-1 has pratical implications, in order to make sure proper countermeasures have been pushed we will wait for some time before releasing source code that allows to generate SHA-1 chosen-prefix collisions.   
 
+## Press Coverage
+
+- [Ars Technica](https://arstechnica.com/information-technology/2020/01/pgp-keys-software-security-and-much-more-threatened-by-new-sha1-exploit/)
+
+- [The Register](https://www.theregister.co.uk/2020/01/08/hash_slamming_security_shamans/)
+
+- [Le Monde (in French)](https://www.lemonde.fr/sciences/article/2020/01/21/une-faille-dans-l-authentification-electronique_6026736_1650684.html)
+
+- [Tom's Hardware](https://www.tomshardware.com/news/researchers-reveal-new-sha-1-attack)
+
 - - -
 # Contact
 
