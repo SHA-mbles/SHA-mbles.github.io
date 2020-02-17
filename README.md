@@ -39,7 +39,7 @@ We have tried to contact the authors of affected software before announcing this
 ## GnuPG
 
 We have first discussed this attack with the GnuPG developers the 9th of May 2019 and eventually informed them of the newly found chosen-prefix collision the 1st of October 2019. The issue is tracked with CVE number CVE-2019-14855. A countermeasure
-has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (released on the 25th of November 2019): SHA-1-based identity signatures created after 2019-01-19 are now considered invalid.
+has been implemented in [commit edc36f5](https://github.com/gpg/gnupg/commit/edc36f59fcfcb4b896a53530345d586f7e5df560), included in GnuPG version 2.2.18 (released on the 25th of November 2019): SHA-1-based identity signatures created after 2019-01-19 are now considered invalid.
 
 ## CAcert
 
@@ -47,11 +47,16 @@ has been implemented in commit edc36f5, included in GnuPG version 2.2.18 (releas
 
 ## OpenSSL
 
-We have contacted the OpenSSL developers on December 14th. They are considering disabling SHA-1 at security level 1 (defined as 80-bit security) after our attack. Since security level 1 is the default configuration, this would prevent SHA-1 usage for certificates, and for handshake signatures. Debian Linux had previously set the default configuration to security level 2 (defined as 112-bit security) in the latest release (Debian Buster); this already prevents dangerous usage of SHA-1.
+We have first contacted the OpenSSL developers on December 14th.  The next version of OpenSSL will no longer allow X.509 certificates signed using SHA-1 at security level 1 and above ([commit 68436f0](https://github.com/openssl/openssl/commit/68436f0a8964e911eb4f864bc8b31d7ca4d29585)). Since security level 1 is the default configuration for TLS/SSL, this will prevent SHA-1 usage for certificates.
+Debian Linux had previously set the default configuration to security level 2 (defined as 112-bit security) in the latest release (Debian Buster); this already prevents dangerous usage of SHA-1.
+
+## OpenSSH
+
+The latest version of OpenSSH (8.2) includes a [“future deprecation notice”](https://www.openssh.com/txt/release-8.2) explaining that SHA-1 signatures will be disabled in the near-future.
 
 ## DNSSEC
 
-After publication of our results, it was pointed that SHA-1 remained used in DNSSEC. It is advised that anyone who is using a SHA-1 DNSKEY algorithm (algorithm numbers 7 or less) should upgrade. See [related page from Tony Finch](https://www.dns.cam.ac.uk/news/2020-01-09-sha-mbles.html) or the [IETF related discussion](https://mailarchive.ietf.org/arch/msg/dnsop/hA4Ur9qxRJIUo13Pjpmrm_va7cs)
+After publication of our results, it was pointed that SHA-1 remained used in DNSSEC, with [18% of TLDs using SHA-1](https://www.dns.cam.ac.uk/news/2020-02-14-sha-mbles.html) signatures. It is advised that anyone who is using a SHA-1 DNSKEY algorithm (algorithm numbers 7 or less) should upgrade. See [related page from Tony Finch](https://www.dns.cam.ac.uk/news/2020-01-09-sha-mbles.html) or the [IETF related discussion](https://mailarchive.ietf.org/arch/msg/dnsop/hA4Ur9qxRJIUo13Pjpmrm_va7cs).
 
 # Q&A
 
